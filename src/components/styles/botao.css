@@ -1,0 +1,7 @@
+.botao {
+    font-family: Montserrat;
+    padding: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    display: flex;
+}

@@ -1,0 +1,59 @@
+.cadastro{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+
+}
+
+.cadastro .topoCadastro {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.cadastro .topoCadastro .subtitulo {
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: rgba(0,0,0, .87);
+    margin-bottom: 20px;
+}
+
+.cadastro .adicionarButton {
+    display: flex;
+}
+
+.cadastro .adicionarButton .adicionar {
+    font-family: Montserrat;
+    color: white;
+    height: 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 0;
+    margin-left: 20px;
+    margin-top: 34px;
+
+}
+
+.cadastro .multilineInput{
+    margin-top: 15px;
+}
+
+.cadastro .salvarButton {
+    float: right;
+    margin-top: 20px;
+
+}
+
+.cadastro .salvarButton .salvar {
+    font-family: Montserrat;
+    height: 28px;
+    width: 130px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 0;
+}

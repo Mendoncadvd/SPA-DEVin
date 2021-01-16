@@ -1,0 +1,32 @@
+.home {
+    /* centrar verticalmente */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* To truly center a div, you need to define one last property, known as the CSS transform property. 
+    While there are nine different transformation methods (and this is not even including 3D transforms), 
+    you want to use the translate() method to move the div along the X- and the Y-axis. Specifically, 
+    you want to move the div 50% to the left and up from its current position. That will tell the browser 
+    to put the center of the div in the center of the page.*/
+    transform: translate(-50%, -70%);
+    /* centrar horizontalmente */
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+}
+
+.home .titulo {
+    font-family: Montserrat;
+    color:#005b95;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.home .subtitulo {
+    font-family: Montserrat;
+    color:  rgba(0,0,0, .87);
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 50px;
+}
