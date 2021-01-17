@@ -7,6 +7,7 @@ const InputLabel = (props) => {
         <Box>
             <TextField 
             component={Paper}
+            elevation={2}
             variant="outlined" 
             square
             placeholder={text}

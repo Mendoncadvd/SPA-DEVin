@@ -1,27 +1,25 @@
-import {Box, TextField} from '@material-ui/core';
+import { Box, TextField } from "@material-ui/core";
 const InputCadastro = (props) => {
+  const { label, multiline, width } = props;
 
-    const {label, multiline, width} = props;
+  return (
+    <Box>
+      <TextField
+        variant="standard"
+        label={label}
+        margin="normal"
+        multiline={multiline}
+        InputLabelProps={{
+          shrink: true,
+        }}
+        style={{ width }}
+      />
+    </Box>
+  );
+};
 
-    return(
-        <Box>
-            <TextField
-                variant="standard"
-                label={label}
-                margin="normal"
-                multiline={multiline}
-                InputLabelProps={{
-                    shrink: true
-                }}
-                style ={{width}}
-            />
-        </Box>
-    )
-}
-
-InputCadastro.defaultProps ={
-    width: 400
-}
-
+InputCadastro.defaultProps = {
+  width: 400,
+};
 
 export default InputCadastro;
