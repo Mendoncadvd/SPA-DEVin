@@ -1,6 +1,6 @@
 import React from 'react';
 import InputLabel from '../../components/InputLabel';
-import './home.css'
+import './home.css';
 import {Box, Link, Typography} from '@material-ui/core';
 
 function Home() {
