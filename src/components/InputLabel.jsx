@@ -1,36 +1,43 @@
-import {Box, IconButton, InputAdornment, TextField, Paper} from '@material-ui/core'
-import {Search} from '@material-ui/icons'
+import {
+  Box,
+  TextField,
+} from "@material-ui/core";
+
 
 const InputLabel = (props) => {
-    const { text } = props;
-    return (
-        <Box>
-            <TextField 
-            component={Paper}
-            elevation={2}
-            variant="outlined" 
-            square
-            placeholder={text}
-            required
-            margin="dense"
-            fullWidth
-            color="primary"
-            InputProps={{
-                endAdornment: (
-                    <InputAdornment>
-                        <IconButton
-                        //aria-label vai ser o rótulo do botão
-                        aria-label="clicar para pesquisar"
-                        //AQUI VAI O onClick e o onMouseDown
-                        >
-                            <Search />
-                        </IconButton>
-                    </InputAdornment>
-                )
-            }}
-            />
-        </Box>
-    )
-}
+  const {
+    elevation,
+    text,
+    variant,
+    margin,
+    fullwidth,
+    inputprops,
+    paper,
+    multiline,
+    shrink,
+    width,
+    label,
+    required,
+  } = props;
+  console.log(elevation, paper);
+  return (
+    <Box>
+      <TextField
+        component={paper}
+        elevation={elevation}
+        variant={variant}
+        placeholder={text}
+        label={label}
+        required={required}
+        margin={margin}
+        fullWidth={fullwidth}
+        InputProps={inputprops}
+        InputLabelProps={shrink}
+        multiline={multiline}
+        style={{ width }}
+      />
+    </Box>
+  );
+};
 
 export default InputLabel;

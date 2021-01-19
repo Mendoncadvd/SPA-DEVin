@@ -5,7 +5,7 @@ import Cadastro from './components/cadastro/Cadastro'
 
 function App() {
     return (
-        <Listagem />
+        <Cadastro />
     )
 }
 

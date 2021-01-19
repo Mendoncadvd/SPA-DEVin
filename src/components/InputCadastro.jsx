@@ -9,6 +9,7 @@ const InputCadastro = (props) => {
         label={label}
         margin="normal"
         multiline={multiline}
+        fullWidth={false}
         InputLabelProps={{
           shrink: true,
         }}

@@ -26,7 +26,7 @@
 .cadastro .adicionarButton {
     display: flex;
 }
-
+/* DELETAR CASO NAO VOLTAR ATRAS COM O COMPONENTE BUTTON ADICIONAR */
 .cadastro .adicionarButton .adicionar {
     font-family: Montserrat;
     color: white;
@@ -37,7 +37,7 @@
     margin-left: 20px;
     margin-top: 34px;
 
-}
+} 
 
 .cadastro .multilineInput{
     margin-top: 15px;
@@ -46,9 +46,8 @@
 .cadastro .salvarButton {
     float: right;
     margin-top: 20px;
-
 }
-
+/* DELETAR CASO NAO VOLTAR ATRAS COM O COMPONENTE BUTTON SALVAR */
 .cadastro .salvarButton .salvar {
     font-family: Montserrat;
     height: 28px;
@@ -56,4 +55,4 @@
     font-size: 14px;
     font-weight: bold;
     border-radius: 0;
-}
+} 

@@ -1,10 +1,9 @@
 import { Button } from "@material-ui/core";
-import "./styles/botao.css";
 
 const Botao = (props) => {
-  const { text, color } = props;
+  const { classname, variant, text, color, size } = props;
   return (
-    <Button className="botao" variant="contained" color={color} size="small">
+    <Button className={classname} variant={variant} color={color} size={size} type="submit">
       {text}
     </Button>
   );
