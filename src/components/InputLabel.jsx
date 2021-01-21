@@ -2,7 +2,7 @@ import {
   Box,
   TextField,
 } from "@material-ui/core";
-
+import { useState, useEffect } from "react";
 
 const InputLabel = (props) => {
   const {
@@ -18,10 +18,16 @@ const InputLabel = (props) => {
     width,
     label,
     required,
+    busca,
+    setBusca
   } = props;
-  console.log(elevation, paper);
+
+  useEffect(() => {
+    console.log(busca)
+  }, [busca]);
   return (
-    <Box>
+  
+    <Box width={"100%"}>
       <TextField
         component={paper}
         elevation={elevation}
@@ -35,6 +41,9 @@ const InputLabel = (props) => {
         InputLabelProps={shrink}
         multiline={multiline}
         style={{ width }}
+        value={busca}
+        onChange={(e) => setBusca(e.target.value)}
+        
       />
     </Box>
   );

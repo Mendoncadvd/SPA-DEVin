@@ -1,4 +1,8 @@
-.home {
+.main {
+    display: flex;
+    flex-direction: column;
+}
+.main .home {
     /* centrar verticalmente */
     position: absolute;
     left: 50%;
@@ -15,7 +19,18 @@
     padding: 10px;
 }
 
-.home .titulo {
+.main .home-posicionada {
+    display: flex;
+    justify-content: space-evenly;
+    left: 0;
+    top: 0;
+    width: 35%;
+    transform: translate(-0%, -20%);
+    
+
+}
+
+.main .titulo {
     font-family: Montserrat;
     color:#005b95;
     font-size: 20px;
@@ -23,10 +38,28 @@
     margin-bottom: 20px;
 }
 
-.home .subtitulo {
+.main .titulo-lateral {
+    text-align: left;
+    font-family: Montserrat;
+    color: black 87%;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.main .input {
+    
+}
+
+.main .subtitulo {
     font-family: Montserrat;
     color:  rgba(0,0,0, .87);
     font-size: 14px;
     font-weight: bold;
     margin-top: 50px;
 }
+
+.main .listagem {
+
+}
+
