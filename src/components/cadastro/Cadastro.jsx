@@ -1,9 +1,9 @@
-import { Box, Typography, Paper, Modal, IconButton } from "@material-ui/core";
+import { Box, Typography, Paper, IconButton } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "./cadastro.css"; 
 import "../../components/styles/botao.css";
-import Botao from "../Botao";
-import InputLabel from "../InputLabel";
+import Botao from "../Botao/Botao";
+import InputLabel from "../InputLabel/InputLabel";
 
 const Cadastro = (props) => {
   const {handleFunction} = props;
