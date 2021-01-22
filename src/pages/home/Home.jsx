@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import InputLabel from "../../components/InputLabel";
 import Cadastro from "../../components/cadastro/Cadastro";
-import Listagem from "../../components/listagem/Listagem";
+import ListagemNova from "../../components/listagem/ListagemNova";
+import Botao from '../../components/Botao';
 import "./home.css";
 import {
   Box,
@@ -10,48 +11,47 @@ import {
   InputAdornment,
   Paper,
   Modal,
-  TextField,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 
 const linhas = [
   {
     id: 1,
+    numero: "letra",
+    assunto: "qualquer",
+    interessado: "fulano",
+    descricao: "blabla",
+  },
+  {
+    id: 2,
     numero: "000",
     assunto: "qualquer",
     interessado: "fulano",
     descricao: "blabla",
   },
   {
-    id: 1,
+    id: 3,
     numero: "000",
     assunto: "qualquer",
     interessado: "fulano",
     descricao: "blabla",
   },
   {
-    id: 1,
+    id: 4,
     numero: "000",
     assunto: "qualquer",
     interessado: "fulano",
     descricao: "blabla",
   },
   {
-    id: 1,
+    id: 5,
     numero: "000",
     assunto: "qualquer",
     interessado: "fulano",
     descricao: "blabla",
   },
   {
-    id: 1,
-    numero: "000",
-    assunto: "qualquer",
-    interessado: "fulano",
-    descricao: "blabla",
-  },
-  {
-    id: 1,
+    id: 6,
     numero: "000",
     assunto: "qualquer",
     interessado: "fulano",
@@ -59,7 +59,7 @@ const linhas = [
   },
 
   {
-    id: 2,
+    id: 7,
     numero: "001",
     assunto: "qualquer",
     interessado: "fulano de tal",
@@ -94,8 +94,6 @@ console.log(busca)
           Busca de processos
         </Typography>
         
-
-        
         <InputLabel
           paper={Paper}
           className="input" 
@@ -114,6 +112,17 @@ console.log(busca)
           busca={busca}
           setBusca={setBusca}
         />
+
+        {busca !== "" && 
+          <Botao 
+          classname="botao-novo"
+          variant="contained"
+          color="default"
+          size="small"
+          text="NOVO"
+        />
+        }
+        
         
         {busca === "" &&
           <Typography
@@ -133,14 +142,17 @@ console.log(busca)
         }
 
       </Box>
-      {busca != "" && (
+      {busca !== "" && (
         <Box className="lista" m={10}>
-          <Listagem listagem={linhas} />
+          <ListagemNova listagem={linhas} />
         </Box>
       )}
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          {<Cadastro handleFunction={handleCloseModal} />}
+          <Box>
+            {<Cadastro handleFunction={handleCloseModal} />}
+          </Box>
+          
         </Modal>
       </Box>
     </Box>
