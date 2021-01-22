@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import InputLabel from "../../components/InputLabel";
+import InputLabel from "../../components/InputLabel/InputLabel";
 import Cadastro from "../../components/cadastro/Cadastro";
-import ListagemNova from "../../components/listagem/ListagemNova";
-import Botao from '../../components/Botao';
+import ListagemNova from "../../components/Listagem/ListagemNova";
+import Botao from "../../components/Botao/Botao";
+import CardLateral from "../../components/CardLateral/CardLateral";
 import "./home.css";
 import {
   Box,
@@ -11,6 +12,7 @@ import {
   InputAdornment,
   Paper,
   Modal,
+  Select,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 
@@ -79,12 +81,21 @@ function Home() {
 
   /* State do TextField de pesquisa */
   const [busca, setBusca] = useState("");
-console.log(busca)
+
+  /* state e handlefunction para caixa lateral */
+  const [infoLateral, setInfoLateral] = useState(false);
+
+  const handleOpenCard = () => {
+    if (infoLateral === false) {
+      setInfoLateral(true);
+    } else {
+      setInfoLateral(false);
+    }
+  };
+
   return (
-    
     <Box className="main">
       <Box m={4} className={busca === "" ? "home" : "home-posicionada"}>
-        
         <Typography
           className={busca === "" ? "titulo" : "titulo-lateral"}
           align="center"
@@ -93,10 +104,10 @@ console.log(busca)
         >
           Busca de processos
         </Typography>
-        
+
         <InputLabel
           paper={Paper}
-          className="input" 
+          className="input"
           elevation={2}
           variant="outlined"
           text="Pesquise por uma informação do processo"
@@ -113,46 +124,51 @@ console.log(busca)
           setBusca={setBusca}
         />
 
-        {busca !== "" && 
-          <Botao 
-          classname="botao-novo"
-          variant="contained"
-          color="default"
-          size="small"
-          text="NOVO"
-        />
-        }
-        
-        
-        {busca === "" &&
-          <Typography
-          className="subtitulo"
-          variant="h6"
-          component="h3"
-          gutterBottom
-          align="center"
-        >
-          Você pode criar um novo processo{" "}
-          {
-            <Link href="#" onClick={handleOpenModal}>
-              clicando aqui.
-            </Link>
-          }
-        </Typography>
-        }
+        {busca !== "" && (
+          <Botao
+            classname="botao-novo"
+            variant="contained"
+            color="default"
+            size="small"
+            text="NOVO"
+            evento={handleOpenModal}
+          />
+        )}
 
+        {busca === "" && (
+          <Typography
+            className="subtitulo"
+            variant="h6"
+            component="h3"
+            gutterBottom
+            align="center"
+          >
+            Você pode criar um novo processo{" "}
+            {
+              <Link href="#" onClick={handleOpenModal}>
+                clicando aqui.
+              </Link>
+            }
+          </Typography>
+        )}
       </Box>
       {busca !== "" && (
-        <Box className="lista" m={10}>
-          <ListagemNova listagem={linhas} />
+        <Box className="parteInferior">
+          <Box
+            className={infoLateral === false ? "lista" : "lista-ajustada"}
+            onClick={handleOpenCard}
+          >
+            <ListagemNova listagem={linhas} />
+          </Box>
+          <Box>{infoLateral === true && <CardLateral className="infoLateral"/>}</Box>
         </Box>
       )}
+      {/* <Box>
+        <ListagemNova listagem={linhas} />
+      </Box> */}
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          <Box>
-            {<Cadastro handleFunction={handleCloseModal} />}
-          </Box>
-          
+          <Box>{<Cadastro handleFunction={handleCloseModal} />}</Box>
         </Modal>
       </Box>
     </Box>
