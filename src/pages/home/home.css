@@ -1,7 +1,7 @@
 .main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
 }
 .main .home {
     /* centrar verticalmente */
@@ -60,25 +60,21 @@
 
 .main .parteIferior {
     display: flex;
-
+    flex-direction: row;
 }
 
 .main .lista {
-    
     flex-direction: column;
     padding: 10px;
     margin-left: 116px;
-    margin-right: 140px;
-
-    
+    margin-right: 140px; 
 }
 
 .main .lista-ajustada {
-    
     /* flex-direction: column; */
     padding: 10px;
     margin-left: 112px;
-    margin-right: 778px;
+    /* margin-right: 778px; */ 
 }
 
 .main .infoLateral {

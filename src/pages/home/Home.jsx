@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import InputLabel from "../../components/InputLabel/InputLabel";
+import InputLabel from "../../components/inputLabel/InputLabel";
 import Cadastro from "../../components/cadastro/Cadastro";
-import ListagemNova from "../../components/Listagem/ListagemNova";
+import ListagemNova from "../../components/listagem/ListagemNova";
 import Botao from "../../components/Botao/Botao";
-import CardLateral from "../../components/CardLateral/CardLateral";
+import CardLateral from "../../components/cardLateral/CardLateral";
 import "./home.css";
 import {
   Box,
@@ -12,7 +12,6 @@ import {
   InputAdornment,
   Paper,
   Modal,
-  Select,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 
@@ -21,7 +20,7 @@ const linhas = [
     id: 1,
     numero: "letra",
     assunto: "qualquer",
-    interessado: "fulano",
+    interessado: "FULANO",
     descricao: "blabla",
   },
   {
@@ -59,7 +58,6 @@ const linhas = [
     interessado: "fulano",
     descricao: "blabla",
   },
-
   {
     id: 7,
     numero: "001",
@@ -67,6 +65,34 @@ const linhas = [
     interessado: "fulano de tal",
     descricao: "TESTE",
   },
+  {
+    id: 8,
+    numero: "001",
+    assunto: "qualquer",
+    interessado: "fulano de tal",
+    descricao: "TESTE",
+  },
+   {
+    id: 9,
+    numero: "001",
+    assunto: "qualquer",
+    interessado: "fulano de tal",
+    descricao: "TESTE",
+  },
+  {
+    id: 10,
+    numero: "letra",
+    assunto: "qualquer",
+    interessado: "FULANO",
+    descricao: "blabla",
+  },
+   {
+    id: 10,
+    numero: "001",
+    assunto: "qualquer",
+    interessado: "fulano de tal",
+    descricao: "TESTE",
+  },  
 ];
 
 function Home() {
@@ -83,7 +109,7 @@ function Home() {
   const [busca, setBusca] = useState("");
 
   /* state e handlefunction para caixa lateral */
-  const [infoLateral, setInfoLateral] = useState(false);
+  const [infoLateral, setInfoLateral] = useState(true);
 
   const handleOpenCard = () => {
     if (infoLateral === false) {
@@ -158,9 +184,9 @@ function Home() {
             className={infoLateral === false ? "lista" : "lista-ajustada"}
             onClick={handleOpenCard}
           >
-            <ListagemNova listagem={linhas} />
+            {/* <ListagemNova listagem={linhas} /> */}
           </Box>
-          <Box>{infoLateral === true && <CardLateral className="infoLateral"/>}</Box>
+          <Box className="infoLateral">{infoLateral === true && <CardLateral listagem={linhas}/>}</Box>
         </Box>
       )}
       {/* <Box>
@@ -168,7 +194,7 @@ function Home() {
       </Box> */}
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          <Box>{<Cadastro handleFunction={handleCloseModal} />}</Box>
+          <Box>{<Cadastro handleFunction={handleCloseModal}/>}</Box>
         </Modal>
       </Box>
     </Box>

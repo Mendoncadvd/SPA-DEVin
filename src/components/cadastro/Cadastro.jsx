@@ -1,9 +1,9 @@
-import { Box, Typography, Paper, IconButton } from "@material-ui/core";
+import { Box, Typography, Paper, IconButton, Grid } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "./cadastro.css"; 
 import "../../components/styles/botao.css";
 import Botao from "../Botao/Botao";
-import InputLabel from "../InputLabel/InputLabel";
+import InputLabel from "../inputLabel/InputLabel";
 
 const Cadastro = (props) => {
   const {handleFunction} = props;
@@ -32,7 +32,8 @@ const Cadastro = (props) => {
           width={400}
         />
         {/* <InputCadastro label="Interessados" multiline={true} /> */}
-        <InputLabel
+
+{/*         <InputLabel
           variant="standard"
           margin="normal"
           multiline={false}
@@ -42,7 +43,17 @@ const Cadastro = (props) => {
           }}
           required={true}
           width={400}
-        />
+        /> */}
+        <Box>
+          <Box>
+            <Typography>Interessados</Typography>
+          </Box>
+          <Grid container spacing={1}>
+            {/* AQUI VAI  */}
+          </Grid>
+          
+        </Box>
+
         <Box className="adicionarButton">
           {/* <InputCadastro label="Novo Interessado" multiline={false} /> */}
           <InputLabel

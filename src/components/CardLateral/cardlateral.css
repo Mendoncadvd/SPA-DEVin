@@ -1,7 +1,31 @@
 .caixa {
+width: 600px;
+}
+
+.caixa .linha1 {
+    display: flex;
+    padding: 10px;
     
 }
 
-.caixa .interessado {
-    background-color: black;
+.caixa .imagem {
+    margin-right: 20px;
+}
+
+.caixa .head {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 14px;
+    color: black 54%;
+}
+
+.caixa .corpoTexto {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 14px;
+    color: black 87%;
+}
+
+.caixa .interessados {
+    display: flex;
 }
