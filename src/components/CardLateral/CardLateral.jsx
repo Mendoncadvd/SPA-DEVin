@@ -13,33 +13,45 @@ const CardLateral = (props) => {
     <Box className="caixa" component={Paper} elevation={3}>
       <Box className="linha1">
         <Box>
-          <img src={placeholder} className="imagem" />
-        </Box>
+          <Box className="pai">
+            <Box className="filho">
+              <img src={placeholder} className="imagem" />
+            </Box>
+            <Box className="header">
+              <Grid className="processo">
+                <Typography className="head">Processo</Typography>
+                <Typography className="corpoTexto">
+                  Processo
+                  {/* {numero} */}
+                </Typography>
+              </Grid>
 
-        <Grid>
-          <Typography className="head">Processo</Typography>
-          <Typography>
-            Processo
-            {/* {numero} */}
-          </Typography>
-          <Typography className="head">Assunto</Typography>
-          <Typography>
-            Assunto
-            {/* {Assunto} */}
-          </Typography>
-        </Grid>
-        <Grid>
-          <Typography className="head">Data</Typography>
-          <Typography>
-            Data
-            {/* {Data} */}
-          </Typography>
-        </Grid>
-        <Grid>
-          <IconButton size="small" className="iconeFechar">
-            <Close fontSize="small" />
-          </IconButton>
-        </Grid>
+              <Grid className="data">
+                <Typography className="head">Data</Typography>
+                <Typography className="corpoTexto">
+                  Data
+                  {/* {Data} */}
+                </Typography>
+              </Grid>
+
+              <Grid className="botao">
+                <IconButton size="small" className="iconeFechar">
+                  <Close fontSize="small" />
+                </IconButton>
+              </Grid>
+              <Grid className="assunto">
+                <Typography className="head">Assunto</Typography>
+                <Typography className="corpoTexto">
+                  {text}
+                  {/* {Assunto} */}
+                </Typography>
+              </Grid>
+
+            </Box>
+            
+            
+          </Box>
+        </Box>
       </Box>
 
       <Box className="linha2">
@@ -52,18 +64,21 @@ const CardLateral = (props) => {
                   item
                   xs={linha.interessado.length > 3 ? 6 : 12}
                   key={linha.key}
+                  className="grid-condicional"
                 >
-                  <Typography>{linha.interessado}</Typography>
+                  <Typography className="corpoTexto">
+                    {linha.interessado}
+                  </Typography>
                 </Grid>
               ))}
           </Grid>
         </Box>
       </Box>
 
-      <Box className="linhas2">
+      <Box className="linha3">
         <Grid>
           <Typography className="head">Descrição</Typography>
-          <Typography>{text}</Typography>
+          <Typography className="corpoTexto">{text}</Typography>
         </Grid>
       </Box>
     </Box>

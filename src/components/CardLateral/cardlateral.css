@@ -1,11 +1,27 @@
 .caixa {
-width: 600px;
+
 }
 
 .caixa .linha1 {
-    display: flex;
     padding: 10px;
-    
+}
+
+.caixa .linha1 .pai{
+    display: flex;
+}
+
+.caixa .linha1 .header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.caixa .linha2 {
+    padding: 10px;
+}
+
+.caixa .linha3{
+    padding: 10px;
 }
 
 .caixa .imagem {
@@ -17,6 +33,7 @@ width: 600px;
     font-weight: bold;
     font-size: 14px;
     color: black 54%;
+    margin-bottom: 5px;
 }
 
 .caixa .corpoTexto {
@@ -26,6 +43,6 @@ width: 600px;
     color: black 87%;
 }
 
-.caixa .interessados {
-    display: flex;
+.caixa .grid-condicional{
+    padding: 2px;
 }
