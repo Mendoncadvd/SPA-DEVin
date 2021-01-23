@@ -3,11 +3,12 @@ import { Close } from "@material-ui/icons";
 import React from "react";
 import placeholder from "../../utils/placeholder.png";
 import "./cardlateral.css";
+import Botao from '../Botao/Botao';
 const CardLateral = (props) => {
   const text =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-  const { numero, data, assunto, interessados, descricao, listagem } = props;
+  const { numero, data, assunto, interessados, descricao, listagem, handlefunction } = props;
 
   return (
     <Box className="caixa" component={Paper} elevation={3}>
@@ -35,7 +36,7 @@ const CardLateral = (props) => {
               </Grid>
 
               <Grid className="botao">
-                <IconButton size="small" className="iconeFechar">
+                <IconButton size="small" className="iconeFechar" onClick={handlefunction}>
                   <Close fontSize="small" />
                 </IconButton>
               </Grid>
@@ -78,6 +79,10 @@ const CardLateral = (props) => {
           <Typography className="head">Descrição</Typography>
           <Typography className="corpoTexto">{text}</Typography>
         </Grid>
+      </Box>
+      <Box className="linha4">
+        <Botao classname="botao-remover" variant="contained" color="default" size="small" text="REMOVER"/>
+        <Botao classname="botao-editar" variant="contained" color="primary" size="small" text="EDITAR"/>
       </Box>
     </Box>
   );

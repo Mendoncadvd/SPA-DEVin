@@ -12,6 +12,10 @@
     flex-wrap: wrap;
 }
 
+.caixa .linha1 .assunto {
+    margin-top: 10px;
+}
+
 .caixa .linha2 {
     padding: 10px;
 }
@@ -40,5 +44,30 @@
 }
 
 .caixa .grid-condicional{
-    padding: 2px;
+    padding: 1px;
 }
+
+.linha4 {
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.linha4 .botao-remover {
+    font-family: Montserrat;
+    font-weight: bold;
+    border-radius: 0px;
+    margin-right: 10px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.linha4 .botao-editar {
+    font-family: Montserrat;
+    margin-right: 10px;
+    font-weight: bold;
+    border-radius: 0px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
