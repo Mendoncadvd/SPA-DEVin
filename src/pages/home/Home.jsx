@@ -184,10 +184,10 @@ function Home() {
         )}
       </Box>
       {busca !== "" && (
-        <Box className="qualquer">
+        <Box className="box-inferior">
           <Box className="parteInferior">
             <Box
-              className="lista" /* {infoLateral === false ? "lista" : "lista-ajustada"} */
+              className={infoLateral === false ? "lista" : "lista-ajustada"}
               onClick={handleOpenCard}
             >
               <ListagemNova listagem={linhas} /> 
@@ -195,12 +195,12 @@ function Home() {
           </Box>
           {infoLateral === true && (
             <Box className="infoLateral">
-              <CardLateral listagem={linhas} />
+              <CardLateral listagem={linhas} handlefunction={handleOpenCard}/>
             </Box>
           )}
         </Box>
       )}
-      
+
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
           <Box>{<Cadastro handleFunction={handleCloseModal} />}</Box>

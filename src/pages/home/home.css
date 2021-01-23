@@ -20,7 +20,7 @@
 
 .main .home-posicionada {
     display: flex;
-    width: 45%;
+    width: 53.5%;
     transform: translate(-0%, -20%);
 }
 
@@ -45,7 +45,9 @@
 .main .botao-novo {
     margin-left: 20px;
     height: 40px;
-    margin-top: 8px
+    margin-top: 8px;
+    width: 100px;
+    border-radius: 0px;
 }
 
 .main .subtitulo {
@@ -56,30 +58,26 @@
     margin-top: 50px;
 }
 
-.main .qualquer {
+.main .box-inferior {
     display: flex;
     width: 100%;
-
 }
 
 .main .parteInferior {
     display: flex;
+    justify-content: center;
     width: 100%;
 }
 
 .main .lista {
-    width: 100%;
-    flex-direction: column;
+    width: 81%;
     padding: 10px;
-    
-    margin-right: 140px; 
 }
 
 .main .lista-ajustada {
-    /* flex-direction: column; */
-    padding: 10px;
+    width: 100%;
     margin-left: 112px;
-    /* margin-right: 778px; */ 
+    margin-right: 20px;
 }
 
 .main .infoLateral {
