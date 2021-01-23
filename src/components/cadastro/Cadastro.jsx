@@ -98,18 +98,9 @@ const Cadastro = (props) => {
               evento={handleAdicionaInteressado}
             />
           </Box>
-          {/* <Button
-          className="adicionar"
-          variant="contained"
-          color="default"
-          size="small"
-        >
-          ADICIONAR
-        </Button> */}
         </Box>
 
         <Box className="multilineInput">
-          {/* <InputCadastro label="Descrição" multiline={true} width={700} /> */}
           <InputLabel
             variant="standard"
             margin="normal"
@@ -131,14 +122,6 @@ const Cadastro = (props) => {
             size="small"
             text="SALVAR"
           />
-          {/* <Button
-          className="salvar"
-          variant="contained"
-          color="primary"
-          size="small"
-        >
-          SALVAR
-        </Button> */}
         </Box>
       </Box>
     </Box>
