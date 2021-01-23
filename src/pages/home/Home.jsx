@@ -5,6 +5,7 @@ import ListagemNova from "../../components/listagem/ListagemNova";
 import Botao from "../../components/Botao/Botao";
 import CardLateral from "../../components/cardLateral/CardLateral";
 import "./home.css";
+import placeholder from '../../utils/placeholder.png';
 import {
   Box,
   Link,
@@ -12,6 +13,10 @@ import {
   InputAdornment,
   Paper,
   Modal,
+  Grid,
+  List,
+  ListItem,
+  ListItemText
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 
@@ -72,7 +77,7 @@ const linhas = [
     interessado: "fulano de tal",
     descricao: "TESTE",
   },
-   {
+  {
     id: 9,
     numero: "001",
     assunto: "qualquer",
@@ -86,13 +91,13 @@ const linhas = [
     interessado: "FULANO",
     descricao: "blabla",
   },
-   {
+  {
     id: 10,
     numero: "001",
     assunto: "qualquer",
     interessado: "fulano de tal",
     descricao: "TESTE",
-  },  
+  },
 ];
 
 function Home() {
@@ -109,7 +114,7 @@ function Home() {
   const [busca, setBusca] = useState("");
 
   /* state e handlefunction para caixa lateral */
-  const [infoLateral, setInfoLateral] = useState(true);
+  const [infoLateral, setInfoLateral] = useState(false);
 
   const handleOpenCard = () => {
     if (infoLateral === false) {
@@ -179,22 +184,26 @@ function Home() {
         )}
       </Box>
       {busca !== "" && (
-        <Box className="parteInferior">
-          <Box
-            className={infoLateral === false ? "lista" : "lista-ajustada"}
-            onClick={handleOpenCard}
-          >
-            {/* <ListagemNova listagem={linhas} /> */}
+        <Box className="qualquer">
+          <Box className="parteInferior">
+            <Box
+              className="lista" /* {infoLateral === false ? "lista" : "lista-ajustada"} */
+              onClick={handleOpenCard}
+            >
+              <ListagemNova listagem={linhas} /> 
+            </Box>
           </Box>
-          <Box className="infoLateral">{infoLateral === true && <CardLateral listagem={linhas}/>}</Box>
+          {infoLateral === true && (
+            <Box className="infoLateral">
+              <CardLateral listagem={linhas} />
+            </Box>
+          )}
         </Box>
       )}
-      {/* <Box>
-        <ListagemNova listagem={linhas} />
-      </Box> */}
+      
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          <Box>{<Cadastro handleFunction={handleCloseModal}/>}</Box>
+          <Box>{<Cadastro handleFunction={handleCloseModal} />}</Box>
         </Modal>
       </Box>
     </Box>

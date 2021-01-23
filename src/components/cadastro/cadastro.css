@@ -26,7 +26,7 @@
 .cadastro .adicionarButton {
     display: flex;
 }
-/* DELETAR CASO NAO VOLTAR ATRAS COM O COMPONENTE BUTTON ADICIONAR */
+
 .cadastro .adicionarButton .adicionar {
     font-family: Montserrat;
     color: white;

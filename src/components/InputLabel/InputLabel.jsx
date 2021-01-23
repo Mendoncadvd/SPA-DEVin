@@ -22,9 +22,9 @@ const InputLabel = (props) => {
     setBusca
   } = props;
 
-  useEffect(() => {
+/*   useEffect(() => {
     console.log(busca)
-  }, [busca]);
+  }, [busca]); */
   return (
   
     <Box width={"100%"}>

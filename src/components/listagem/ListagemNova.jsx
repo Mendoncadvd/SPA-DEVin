@@ -4,20 +4,19 @@ import './listagem.css';
 import placeholder from '../../utils/placeholder.png';
 const useStyle = makeStyles((theme) => ({
   root: {
-    fontFamily: "Montserrat",
+    /* fontFamily: "Montserrat",
     fontSize: "14px",
     fontWeight: "bold",
     color: "#757575",
     width: "20%",
-    marginBottom:"10px"
+    marginBottom:"10px" */
   },
   
   container: {
-    fontFamily: "Montserrat",
+   /*  fontFamily: "Montserrat",
     fontSize: "14px",
     color: "black 87%",
-    width: "20%",
-    
+    width: "20%", */
   },
 }))
 
@@ -25,10 +24,8 @@ const ListagemNova = (props) => {
   const { listagem } = props;
   const classes = useStyle();
   return (
-    <>
-      {listagem.map((linha) => (
+      listagem.map((linha) => (
         <Paper className="tabela-container" elevation={3}>
-          <List>
             <ListItem>
               <img className="imagem" src={placeholder} alt="PlaceHolder"/>
               <ListItemText>
@@ -48,10 +45,10 @@ const ListagemNova = (props) => {
                 <Grid classes={{container: classes.container}}>{linha.descricao}</Grid>
               </ListItemText>
             </ListItem>
-          </List> 
-        </Paper>
-      ))}
-    </>
+          </Paper>
+          ))
+          
+  
   );
 };
 

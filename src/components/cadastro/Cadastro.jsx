@@ -1,20 +1,35 @@
 import { Box, Typography, Paper, IconButton, Grid } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
-import "./cadastro.css"; 
+import "./cadastro.css";
 import "../../components/styles/botao.css";
 import Botao from "../Botao/Botao";
 import InputLabel from "../inputLabel/InputLabel";
+import React, { useState } from "react";
 
 const Cadastro = (props) => {
-  const {handleFunction} = props;
+  const { handleFunction } = props;
+
+  const [interessados, setInteressados] = useState([]);
+
+  const [interessado, setInteressado] = useState("");
+
+  const handleAdicionaInteressado = () => {
+    setInteressados([...interessados, interessado]);
+    setInteressado("")
+  };
+
+  console.log(interessados);
   return (
-    
     <Box component={Paper} className="cadastro" width="60%" square>
       <Box className="topoCadastro">
         <Typography className="subtitulo" variant="h3" component="h2">
           Cadastro de Processo
         </Typography>
-        <IconButton size="small" className="iconeFechar" onClick={handleFunction}>
+        <IconButton
+          size="small"
+          className="iconeFechar"
+          onClick={handleFunction}
+        >
           <Close fontSize="small" />
         </IconButton>
       </Box>
@@ -33,7 +48,7 @@ const Cadastro = (props) => {
         />
         {/* <InputCadastro label="Interessados" multiline={true} /> */}
 
-{/*         <InputLabel
+        {/*         <InputLabel
           variant="standard"
           margin="normal"
           multiline={false}
@@ -47,33 +62,42 @@ const Cadastro = (props) => {
         <Box>
           <Box>
             <Typography>Interessados</Typography>
+            <Grid style={{maxHeight: "100px", overflow: "auto"}}>
+              {interessados.length > 0 &&
+              interessados.map((pessoa) => <Typography>{pessoa}</Typography>)
+              }
+            </Grid>
           </Box>
-          <Grid container spacing={1}>
-            {/* AQUI VAI  */}
-          </Grid>
-          
         </Box>
 
         <Box className="adicionarButton">
           {/* <InputCadastro label="Novo Interessado" multiline={false} /> */}
-          <InputLabel
-            variant="standard"
-            margin="normal"
-            multiline={false}
-            label="Novo Interessado"
-            shrink={{
-              shrink: true,
-            }}
-            required={true}
-            width={400}
-          />
-          <Botao
-            classname="adicionar"
-            variant="contained"
-            color="default"
-            size="small"
-            text="ADICIONAR"
-          />
+          <Box>
+            <InputLabel
+              variant="standard"
+              margin="normal"
+              multiline={false}
+              label="Novo Interessado"
+              shrink={{
+                shrink: true,
+              }}
+              required={true}
+              width={400}
+              name={interessados}
+              busca={interessado}
+              setBusca={setInteressado}
+            />
+          </Box>
+          <Box>
+            <Botao
+              classname="adicionar"
+              variant="contained"
+              color="default"
+              size="small"
+              text="ADICIONAR"
+              evento={handleAdicionaInteressado}
+            />
+          </Box>
           {/* <Button
           className="adicionar"
           variant="contained"
@@ -118,7 +142,6 @@ const Cadastro = (props) => {
         </Box>
       </Box>
     </Box>
-    
   );
 };
 

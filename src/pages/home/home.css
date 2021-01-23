@@ -1,7 +1,6 @@
 .main {
     display: flex;
     flex-direction: column;
-    
 }
 .main .home {
     /* centrar verticalmente */
@@ -16,14 +15,13 @@
     transform: translate(-50%, -70%);
     /* centrar horizontalmente */
     margin: auto;
-    width: 35%;
+    width: 35%; 
 }
 
 .main .home-posicionada {
     display: flex;
     width: 45%;
     transform: translate(-0%, -20%);
-    
 }
 
 .main .titulo {
@@ -58,15 +56,22 @@
     margin-top: 50px;
 }
 
-.main .parteIferior {
+.main .qualquer {
     display: flex;
-    flex-direction: row;
+    width: 100%;
+
+}
+
+.main .parteInferior {
+    display: flex;
+    width: 100%;
 }
 
 .main .lista {
+    width: 100%;
     flex-direction: column;
     padding: 10px;
-    margin-left: 116px;
+    
     margin-right: 140px; 
 }
 
@@ -78,7 +83,7 @@
 }
 
 .main .infoLateral {
-    
+    width: 100%;
 }
 
 

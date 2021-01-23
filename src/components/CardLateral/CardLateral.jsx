@@ -56,7 +56,6 @@ const CardLateral = (props) => {
 
       <Box className="linha2">
         <Typography className="head">Interessados</Typography>
-        <Box>
           <Grid container spacing={1}>
             {listagem.length > 0 &&
               listagem.map((linha) => (
@@ -72,7 +71,6 @@ const CardLateral = (props) => {
                 </Grid>
               ))}
           </Grid>
-        </Box>
       </Box>
 
       <Box className="linha3">
