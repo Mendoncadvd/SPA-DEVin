@@ -5,7 +5,8 @@ import ListagemNova from "../../components/listagem/ListagemNova";
 import Botao from "../../components/Botao/Botao";
 import CardLateral from "../../components/cardLateral/CardLateral";
 import "./home.css";
-import placeholder from '../../utils/placeholder.png';
+import RequestBackend from "../../services/RequestBackend";
+import Editar from '../../components/edit/Editar';
 import {
   Box,
   Link,
@@ -13,95 +14,11 @@ import {
   InputAdornment,
   Paper,
   Modal,
-  Grid,
-  List,
-  ListItem,
-  ListItemText
+  Fade,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 
-const linhas = [
-  {
-    id: 1,
-    numero: "letra",
-    assunto: "qualquer",
-    interessado: "FULANO",
-    descricao: "blabla",
-  },
-  {
-    id: 2,
-    numero: "000",
-    assunto: "qualquer",
-    interessado: "fulano",
-    descricao: "blabla",
-  },
-  {
-    id: 3,
-    numero: "000",
-    assunto: "qualquer",
-    interessado: "fulano",
-    descricao: "blabla",
-  },
-  {
-    id: 4,
-    numero: "000",
-    assunto: "qualquer",
-    interessado: "fulano",
-    descricao: "blabla",
-  },
-  {
-    id: 5,
-    numero: "000",
-    assunto: "qualquer",
-    interessado: "fulano",
-    descricao: "blabla",
-  },
-  {
-    id: 6,
-    numero: "000",
-    assunto: "qualquer",
-    interessado: "fulano",
-    descricao: "blabla",
-  },
-  {
-    id: 7,
-    numero: "001",
-    assunto: "qualquer",
-    interessado: "fulano de tal",
-    descricao: "TESTE",
-  },
-  {
-    id: 8,
-    numero: "001",
-    assunto: "qualquer",
-    interessado: "fulano de tal",
-    descricao: "TESTE",
-  },
-  {
-    id: 9,
-    numero: "001",
-    assunto: "qualquer",
-    interessado: "fulano de tal",
-    descricao: "TESTE",
-  },
-  {
-    id: 10,
-    numero: "letra",
-    assunto: "qualquer",
-    interessado: "FULANO",
-    descricao: "blabla",
-  },
-  {
-    id: 10,
-    numero: "001",
-    assunto: "qualquer",
-    interessado: "fulano de tal",
-    descricao: "TESTE",
-  },
-];
-
 function Home() {
-  /* Functions e State do modal */
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -110,20 +27,56 @@ function Home() {
   };
   const [openModal, setOpenModal] = useState(false);
 
-  /* State do TextField de pesquisa */
+  /* Function e State do TextField de pesquisa */
   const [busca, setBusca] = useState("");
+  const [lista, setLista] = useState([]);
 
+  const handleBusca = async (valor) => {
+    setBusca(valor);
+    const novaLista = await RequestBackend.getAssunto(busca);
+    setLista(novaLista);
+  };
   /* state e handlefunction para caixa lateral */
   const [infoLateral, setInfoLateral] = useState(false);
 
-  const handleOpenCard = () => {
-    if (infoLateral === false) {
-      setInfoLateral(true);
-    } else {
-      setInfoLateral(false);
-    }
-  };
+  /* State para guardar o item selecionado */
+  
+  const [idProp, setIdProp] = useState("");
 
+  const handleOpenCard = async (id) => {
+    const newInfoLateral = await RequestBackend.getID(id);
+    console.log(newInfoLateral)
+    setIdProp(newInfoLateral);
+    setInfoLateral(true)
+  };
+  const handleCloseCard = () => {
+    setInfoLateral(false)
+  }
+
+  /* função para deletar */
+  const [popUpDelete, setPopUpDelete] = useState(false)
+
+  const handleDelete = async (id) => {
+    await RequestBackend.deletePorID(id);
+    setBusca("");
+    setInfoLateral(false);
+    setPopUpDelete(true)
+  }
+
+  const handleClosePopUpDelete = () => {
+    setPopUpDelete(false);
+  }
+
+
+  /* função  para editar e cadastrar*/
+  const [editar, setEditar] = useState(false)
+
+  const handleCloseEditar = () => {
+    setEditar(false)
+  }
+  const handleOpenEditar = () => {
+    setEditar(true)
+  }
   return (
     <Box className="main">
       <Box m={4} className={busca === "" ? "home" : "home-posicionada"}>
@@ -152,7 +105,7 @@ function Home() {
             ),
           }}
           busca={busca}
-          setBusca={setBusca}
+          handlefunction={(e) => handleBusca(e.target.value)}
         />
 
         {busca !== "" && (
@@ -186,24 +139,41 @@ function Home() {
       {busca !== "" && (
         <Box className="box-inferior">
           <Box className="parteInferior">
-            <Box
-              className={infoLateral === false ? "lista" : "lista-ajustada"}
-              onClick={handleOpenCard}
-            >
-              <ListagemNova listagem={linhas} /> 
+            <Box className={infoLateral === false ? "lista" : "lista-ajustada"}>
+              <ListagemNova listagem={lista} handlefunction={handleOpenCard} />
             </Box>
           </Box>
           {infoLateral === true && (
             <Box className="infoLateral">
-              <CardLateral listagem={linhas} handlefunction={handleOpenCard}/>
+              <CardLateral
+                item={idProp}
+                handlefunction={handleCloseCard}
+                handledelete ={handleDelete}
+                handleedit={handleOpenEditar}
+              />
             </Box>
           )}
         </Box>
       )}
-
+       
+        <Modal
+        open={popUpDelete}
+        onClose={handleClosePopUpDelete}
+        >
+          <Fade in={popUpDelete}>
+            <Typography>Processo Deletado!</Typography>
+          </Fade>
+        </Modal>
+      
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          <Box>{<Cadastro handleFunction={handleCloseModal} />}</Box>
+          <Cadastro handleFunction={handleCloseModal} />
+        </Modal>
+      </Box>
+
+      <Box>
+        <Modal open={editar} onClose={handleCloseEditar}>
+            <Editar handleFunction={handleCloseEditar} item={idProp}/>
         </Modal>
       </Box>
     </Box>

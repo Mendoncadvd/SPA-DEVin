@@ -39,7 +39,7 @@ const Listagem = (props) => {
   console.log(listagem);
   return (
     <>
-      {listagem.map((linha) => (
+      {listagem?.map((linha) => (
         <TableContainer
           className="tabela"
           component={Paper}

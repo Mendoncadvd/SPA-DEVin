@@ -37,7 +37,7 @@ const ListagemTeste = (props) => {
 
   return (
     <>
-      {listagem.map((linha) => (
+      {listagem?.map((linha) => (
         
         <TableContainer
           onClick={handleClick}

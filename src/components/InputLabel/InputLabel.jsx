@@ -19,7 +19,7 @@ const InputLabel = (props) => {
     label,
     required,
     busca,
-    setBusca
+    handlefunction
   } = props;
 
 /*   useEffect(() => {
@@ -42,11 +42,11 @@ const InputLabel = (props) => {
         multiline={multiline}
         style={{ width }}
         value={busca}
-        onChange={(e) => setBusca(e.target.value)}
-        
+        onChange={handlefunction}
       />
     </Box>
   );
 };
+
 
 export default InputLabel;

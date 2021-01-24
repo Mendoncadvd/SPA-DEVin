@@ -1,4 +1,12 @@
-import { Box, Typography, Paper, IconButton, Grid } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  Paper,
+  IconButton,
+  Grid,
+  Modal,
+  Fade,
+} from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "./cadastro.css";
 import "../../components/styles/botao.css";
@@ -15,10 +23,15 @@ const Cadastro = (props) => {
 
   const handleAdicionaInteressado = () => {
     setInteressados([...interessados, interessado]);
-    setInteressado("")
+    setInteressado("");
   };
-
-  console.log(interessados);
+  const [modal, setModal] = useState(false)
+  const openModal = () => {
+    setModal(true)
+  }
+  const closeModal = () => {
+    setModal(false)
+  }
   return (
     <Box component={Paper} className="cadastro" width="60%" square>
       <Box className="topoCadastro">
@@ -34,7 +47,6 @@ const Cadastro = (props) => {
         </IconButton>
       </Box>
       <Box>
-        {/* <InputCadastro label="Assunto" multiline={false} /> */}
         <InputLabel
           variant="standard"
           margin="normal"
@@ -45,33 +57,20 @@ const Cadastro = (props) => {
           }}
           required={true}
           width={400}
-        />
-        {/* <InputCadastro label="Interessados" multiline={true} /> */}
 
-        {/*         <InputLabel
-          variant="standard"
-          margin="normal"
-          multiline={false}
-          label="Interessados"
-          shrink={{
-            shrink: true,
-          }}
-          required={true}
-          width={400}
-        /> */}
+        />
         <Box>
           <Box>
             <Typography>Interessados</Typography>
-            <Grid style={{maxHeight: "100px", overflow: "auto"}}>
-              {interessados.length > 0 &&
-              interessados.map((pessoa) => <Typography>{pessoa}</Typography>)
-              }
+            <Grid style={{ maxHeight: "100px", overflow: "auto" }}>
+              {interessados?.map((pessoa) => (
+                <Typography>{pessoa}</Typography>
+              ))}
             </Grid>
           </Box>
         </Box>
 
         <Box className="adicionarButton">
-          {/* <InputCadastro label="Novo Interessado" multiline={false} /> */}
           <Box>
             <InputLabel
               variant="standard"
@@ -85,7 +84,7 @@ const Cadastro = (props) => {
               width={400}
               name={interessados}
               busca={interessado}
-              setBusca={setInteressado}
+              handlefunction={(e) => setInteressado(e.target.value)}
             />
           </Box>
           <Box>
@@ -121,9 +120,21 @@ const Cadastro = (props) => {
             color="primary"
             size="small"
             text="SALVAR"
+            evento={openModal}
           />
         </Box>
       </Box>
+      <Modal
+      open={modal}
+      onClose={closeModal}
+      >
+        <Fade
+        in={modal}>
+          <Typography>
+            Cadastro Salvo!
+          </Typography>
+        </Fade>
+      </Modal>
     </Box>
   );
 };

@@ -3,13 +3,10 @@ import { Close } from "@material-ui/icons";
 import React from "react";
 import placeholder from "../../utils/placeholder.png";
 import "./cardlateral.css";
-import Botao from '../Botao/Botao';
+import Botao from "../Botao/Botao";
 const CardLateral = (props) => {
-  const text =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-  const { numero, data, assunto, interessados, descricao, listagem, handlefunction } = props;
-
+  const { item, handlefunction, handledelete, handleedit } = props;
   return (
     <Box className="caixa" component={Paper} elevation={3}>
       <Box className="linha1">
@@ -23,7 +20,7 @@ const CardLateral = (props) => {
                 <Typography className="head">Processo</Typography>
                 <Typography className="corpoTexto">
                   Processo
-                  {/* {numero} */}
+                  {item.numero}
                 </Typography>
               </Grid>
 
@@ -31,58 +28,69 @@ const CardLateral = (props) => {
                 <Typography className="head">Data</Typography>
                 <Typography className="corpoTexto">
                   Data
-                  {/* {Data} */}
+                  {item.entrada}
                 </Typography>
               </Grid>
 
               <Grid className="botao">
-                <IconButton size="small" className="iconeFechar" onClick={handlefunction}>
+                <IconButton
+                  size="small"
+                  className="iconeFechar"
+                  onClick={handlefunction}
+                >
                   <Close fontSize="small" />
                 </IconButton>
               </Grid>
               <Grid className="assunto">
                 <Typography className="head">Assunto</Typography>
-                <Typography className="corpoTexto">
-                  {text}
-                  {/* {Assunto} */}
-                </Typography>
+                <Typography className="corpoTexto">{item.assunto}</Typography>
               </Grid>
-
             </Box>
-            
-            
           </Box>
         </Box>
       </Box>
 
       <Box className="linha2">
         <Typography className="head">Interessados</Typography>
-          <Grid container spacing={1}>
-            {listagem.length > 0 &&
-              listagem.map((linha) => (
-                <Grid
-                  item
-                  xs={linha.interessado.length > 3 ? 6 : 12}
-                  key={linha.key}
-                  className="grid-condicional"
-                >
-                  <Typography className="corpoTexto">
-                    {linha.interessado}
-                  </Typography>
-                </Grid>
-              ))}
+        <Grid container spacing={1}>
+          <Grid
+            item
+            xs={item.interessados.length > 3 ? 6 : 12}
+            className="grid-condicional"
+          >
+            {item.interessados.map((interessado, index) => (
+              <Typography key={index} className="corpoTexto">
+                {interessado}
+              </Typography>
+            ))}
           </Grid>
+        </Grid>
       </Box>
 
       <Box className="linha3">
         <Grid>
           <Typography className="head">Descrição</Typography>
-          <Typography className="corpoTexto">{text}</Typography>
+          <Typography className="corpoTexto">{item.descricao}</Typography>
         </Grid>
       </Box>
       <Box className="linha4">
-        <Botao classname="botao-remover" variant="contained" color="default" size="small" text="REMOVER"/>
-        <Botao classname="botao-editar" variant="contained" color="primary" size="small" text="EDITAR"/>
+        <Botao
+          classname="botao-remover"
+          variant="contained"
+          color="default"
+          size="small"
+          text="REMOVER"
+          evento={() => handledelete(item.id)}
+
+        />
+        <Botao
+          classname="botao-editar"
+          variant="contained"
+          color="primary"
+          size="small"
+          text="EDITAR"
+          evento={handleedit}
+        />
       </Box>
     </Box>
   );
