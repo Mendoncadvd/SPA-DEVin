@@ -15,7 +15,7 @@ import InputLabel from "../inputLabel/InputLabel";
 import React, { useState } from "react";
 
 const Cadastro = (props) => {
-  const { handleFunction } = props;
+  const { handleFunction, salvar } = props;
 
   const [interessados, setInteressados] = useState([]);
 
@@ -120,7 +120,7 @@ const Cadastro = (props) => {
             color="primary"
             size="small"
             text="SALVAR"
-            evento={openModal}
+            evento={salvar}
           />
         </Box>
       </Box>

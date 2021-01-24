@@ -6,7 +6,7 @@ import Botao from "../../components/Botao/Botao";
 import CardLateral from "../../components/cardLateral/CardLateral";
 import "./home.css";
 import RequestBackend from "../../services/RequestBackend";
-import Editar from '../../components/edit/Editar';
+import Editar from "../../components/edit/Editar";
 import {
   Box,
   Link,
@@ -40,43 +40,79 @@ function Home() {
   const [infoLateral, setInfoLateral] = useState(false);
 
   /* State para guardar o item selecionado */
-  
+
   const [idProp, setIdProp] = useState("");
 
   const handleOpenCard = async (id) => {
     const newInfoLateral = await RequestBackend.getID(id);
-    console.log(newInfoLateral)
+    console.log(newInfoLateral);
     setIdProp(newInfoLateral);
-    setInfoLateral(true)
+    setInfoLateral(true);
   };
   const handleCloseCard = () => {
-    setInfoLateral(false)
-  }
+    setInfoLateral(false);
+  };
 
   /* função para deletar */
-  const [popUpDelete, setPopUpDelete] = useState(false)
+  const [popUpDelete, setPopUpDelete] = useState(false);
 
   const handleDelete = async (id) => {
     await RequestBackend.deletePorID(id);
     setBusca("");
     setInfoLateral(false);
-    setPopUpDelete(true)
-  }
+    setPopUpDelete(true);
+  };
 
   const handleClosePopUpDelete = () => {
     setPopUpDelete(false);
-  }
+  };
 
-
-  /* função  para editar e cadastrar*/
-  const [editar, setEditar] = useState(false)
+  /* função  para editar */
+  const [editar, setEditar] = useState(false);
 
   const handleCloseEditar = () => {
-    setEditar(false)
-  }
+    setEditar(false);
+  };
   const handleOpenEditar = () => {
-    setEditar(true)
-  }
+    setEditar(true);
+  };
+
+  /* função para popup de editar */
+  const [popUpEditar, setPopUpEditar] = useState(false);
+
+  const handleSalvarEditar = () => {
+    setBusca("");
+    if (editar === true) {
+      setEditar(false);
+    }
+    if (openModal === true) {
+      setOpenModal(false);
+    }
+    setInfoLateral(false);
+    setPopUpEditar(true);
+  };
+
+  const handleClosePopUpEditar = () => {
+    setPopUpEditar(false);
+  };
+
+  /* função para popup de salvar*/
+  const [popUpCadastrar, setPopUpCadastrar] = useState(false);
+  const handleSalvarCadastrar = () => {
+    setBusca("");
+    if (editar === true) {
+      setEditar(false);
+    }
+    if (openModal === true) {
+      setOpenModal(false);
+    }
+    setInfoLateral(false);
+    setPopUpCadastrar(true);
+  };
+  const handleClosePopUpCadastrar = () => {
+    setPopUpCadastrar(false);
+  };
+
   return (
     <Box className="main">
       <Box m={4} className={busca === "" ? "home" : "home-posicionada"}>
@@ -148,34 +184,50 @@ function Home() {
               <CardLateral
                 item={idProp}
                 handlefunction={handleCloseCard}
-                handledelete ={handleDelete}
+                handledelete={handleDelete}
                 handleedit={handleOpenEditar}
               />
             </Box>
           )}
         </Box>
       )}
-       
-        <Modal
-        open={popUpDelete}
-        onClose={handleClosePopUpDelete}
-        >
-          <Fade in={popUpDelete}>
-            <Typography>Processo Deletado!</Typography>
-          </Fade>
-        </Modal>
-      
+
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          <Cadastro handleFunction={handleCloseModal} />
+          <Cadastro
+            handleFunction={handleCloseModal}
+            salvar={handleSalvarCadastrar}
+          />
         </Modal>
       </Box>
 
       <Box>
-        <Modal open={editar} onClose={handleCloseEditar}>
-            <Editar handleFunction={handleCloseEditar} item={idProp}/>
+        <Modal open={editar} onClose={handleClosePopUpEditar}>
+          <Editar
+            handleFunction={handleCloseEditar}
+            salvar={handleSalvarEditar}
+            item={idProp}
+          />
         </Modal>
       </Box>
+
+      <Modal open={popUpDelete} onClose={handleClosePopUpDelete}>
+        <Fade in={popUpDelete}>
+          <Typography>Processo Deletado!</Typography>
+        </Fade>
+      </Modal>
+
+      <Modal open={popUpCadastrar} onClose={handleClosePopUpCadastrar}>
+        <Fade in={popUpCadastrar}>
+          <Typography>Cadastro Salvo!</Typography>
+        </Fade>
+      </Modal>
+
+      <Modal open={popUpEditar} onClose={handleClosePopUpEditar}>
+        <Fade in={popUpEditar}>
+          <Typography>Cadastro Editado!</Typography>
+        </Fade>
+      </Modal>
     </Box>
   );
 }
