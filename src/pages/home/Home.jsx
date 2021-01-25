@@ -7,6 +7,7 @@ import CardLateral from "../../components/cardLateral/CardLateral";
 import "./home.css";
 import RequestBackend from "../../services/RequestBackend";
 import Editar from "../../components/edit/Editar";
+import Mensagem from "../../components/mensagem/Mensagem";
 import {
   Box,
   Link,
@@ -57,7 +58,7 @@ function Home() {
 
   const handleDelete = async (id) => {
     const resposta = await RequestBackend.deletePorID(id);
-    console.log("resposta", resposta)
+    console.log("resposta", resposta);
     setBusca("");
     setInfoLateral(false);
     setPopUpDelete(true);
@@ -112,7 +113,7 @@ function Home() {
   const handleClosePopUpCadastrar = () => {
     setPopUpCadastrar(false);
   };
-  
+
   /* função para adicionar */
   const handleCadastro = async (processo) => {
     await RequestBackend.postProcesso(processo);
@@ -181,7 +182,11 @@ function Home() {
         <Box className="box-inferior">
           <Box className="parteInferior">
             <Box className={infoLateral === false ? "lista" : "lista-ajustada"}>
-              <ListagemNova listagem={lista} handlefunction={handleOpenCard} display={infoLateral}/>
+              <ListagemNova
+                listagem={lista}
+                handlefunction={handleOpenCard}
+                display={infoLateral}
+              />
             </Box>
           </Box>
           {infoLateral === true && (
@@ -199,10 +204,7 @@ function Home() {
 
       <Box>
         <Modal open={openModal} onClose={handleCloseModal}>
-          <Cadastro
-            handleFunction={handleCloseModal}
-            salvar={handleCadastro}
-          />
+          <Cadastro handleFunction={handleCloseModal} salvar={handleCadastro} />
         </Modal>
       </Box>
 
@@ -217,20 +219,30 @@ function Home() {
       </Box>
 
       <Modal open={popUpDelete} onClose={handleClosePopUpDelete}>
-        <Fade in={popUpDelete}>
-          <Typography>Processo Deletado!</Typography>
+        <Fade in={popUpDelete} className="fade">
+          <Mensagem text="Processo Deletado!" />
         </Fade>
       </Modal>
 
-      <Modal open={popUpCadastrar} onClose={handleClosePopUpCadastrar}>
+      <Modal
+        open={popUpCadastrar}
+        onClose={handleClosePopUpCadastrar}
+        className="modalSalvar"
+      >
         <Fade in={popUpCadastrar}>
-          <Typography>Cadastro Salvo!</Typography>
+          <Box>
+            <Mensagem text="Cadastro Salvo!" />
+          </Box>
         </Fade>
       </Modal>
 
-      <Modal open={popUpEditar} onClose={handleClosePopUpEditar}>
+      <Modal
+        open={popUpEditar}
+        onClose={handleClosePopUpEditar}
+        className="modalEditar"
+      >
         <Fade in={popUpEditar}>
-          <Typography>Cadastro Editado!</Typography>
+          <Mensagem text="Cadastro Editado!" />
         </Fade>
       </Modal>
     </Box>

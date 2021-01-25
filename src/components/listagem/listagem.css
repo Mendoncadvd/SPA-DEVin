@@ -1,8 +1,17 @@
 .tabela-container {
     margin-bottom: 15px;
 }
-
+.tabela-container .lista {
+    display: flex;
+    justify-content: space-evenly;
+}
 .tabela-container .imagem {
     margin-right: 20px;
 }
 
+.descricao {
+    width: 300px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

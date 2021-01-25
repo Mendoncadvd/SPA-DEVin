@@ -1,0 +1,21 @@
+.mensagem {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -70%);
+    margin: auto;
+    width: 35%;
+    height: 35%; 
+   
+} 
+.mensagem .texto {
+    justify-content: center;
+    font-family: 2;
+    color: black 87%;
+    font-size: 20px;
+    font-family: Montserrat;
+    font-weight: normal;
+    left: 50%;
+    top: 50%;
+    transform: translate(29%, 300%);
+}

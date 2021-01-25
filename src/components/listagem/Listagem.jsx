@@ -34,26 +34,26 @@ function ListagemNova(props) {
     <Box component={Paper} className="tabela-container" elevation={3} onClick={() => handlefunction(linha.id) }>
       <ListItem key={linha.id}>
         {display === false && <img className="imagem" src={placeholder} alt="PlaceHolder" />}
-        <ListItemText>
-          <Grid classes={{ root: classes.root }}>Número</Grid>
+        <ListItemText className="numero" key={Math.random().toString(36).substr(2, 9)}>
+          <Grid classes={{ root: classes.root }} key={Math.random().toString(36).substr(2, 9)}>Número</Grid>
           <Grid classes={{ container: classes.container }}>{linha.numero}</Grid>
         </ListItemText>
-        <ListItemText>
-          <Grid classes={{ root: classes.root }}>Assunto</Grid>
-          <Grid classes={{ container: classes.container }}>
+        <ListItemText className="assunto" key={Math.random().toString(36).substr(2, 9)}>
+          <Grid classes={{ root: classes.root }} key={Math.random().toString(36).substr(2, 9)}>Assunto</Grid>
+          <Grid classes={{ container: classes.container }} key={Math.random().toString(36).substr(2, 9)}>
             {linha.assunto}
           </Grid>
         </ListItemText>
-        <ListItemText>
-          <Grid classes={{ root: classes.root }}>Interessado</Grid>
-          <Grid classes={{ container: classes.container }}>
+        <ListItemText className="interessados" key={Math.random().toString(36).substr(2, 9)}>
+          <Grid classes={{ root: classes.root }} key={Math.random().toString(36).substr(2, 9)}>Interessado</Grid>
+          <Grid classes={{ container: classes.container }} key={Math.random().toString(36).substr(2, 9)}>
             {linha.interessados}
           </Grid>
         </ListItemText>
         {display === false && 
-          <ListItemText>
-            <Grid classes={{ root: classes.root }}>Descrição</Grid>
-            <Grid classes={{ container: classes.container }}>
+          <ListItemText key={Math.random().toString(36).substr(2, 9)}>
+            <Grid classes={{ root: classes.root }} key={Math.random().toString(36).substr(2, 9)}>Descrição</Grid >
+            <Grid className="descricao" classes={{ container: classes.container }} key={Math.random().toString(36).substr(2, 9)}>
               {linha.descricao}
             </Grid>
           </ListItemText>

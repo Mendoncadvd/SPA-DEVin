@@ -26,6 +26,7 @@ const Cadastro = (props) => {
 
   const [assunto, setAssunto] = useState("")
   const [ descricao, setDescricao] = useState("")
+  
   return (
     <Box component={Paper} className="cadastro" width="60%" square>
       <Box className="topoCadastro">
