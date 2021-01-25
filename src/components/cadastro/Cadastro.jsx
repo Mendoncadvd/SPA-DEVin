@@ -4,8 +4,6 @@ import {
   Paper,
   IconButton,
   Grid,
-  Modal,
-  Fade,
 } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "./cadastro.css";
@@ -25,13 +23,9 @@ const Cadastro = (props) => {
     setInteressados([...interessados, interessado]);
     setInteressado("");
   };
-  const [modal, setModal] = useState(false)
-  const openModal = () => {
-    setModal(true)
-  }
-  const closeModal = () => {
-    setModal(false)
-  }
+
+  const [assunto, setAssunto] = useState("")
+  const [ descricao, setDescricao] = useState("")
   return (
     <Box component={Paper} className="cadastro" width="60%" square>
       <Box className="topoCadastro">
@@ -57,7 +51,7 @@ const Cadastro = (props) => {
           }}
           required={true}
           width={400}
-
+          handlefunction={(e) => setAssunto(e.target.value)}
         />
         <Box>
           <Box>
@@ -110,6 +104,7 @@ const Cadastro = (props) => {
             }}
             required={true}
             width={700}
+            handlefunction={(e) => setDescricao(e.target.value)}
           />
         </Box>
 
@@ -120,21 +115,14 @@ const Cadastro = (props) => {
             color="primary"
             size="small"
             text="SALVAR"
-            evento={salvar}
+            evento={() => salvar({
+              "descricao": descricao,
+              "assunto": assunto,
+              "interessados": interessados,
+            })}
           />
         </Box>
       </Box>
-      <Modal
-      open={modal}
-      onClose={closeModal}
-      >
-        <Fade
-        in={modal}>
-          <Typography>
-            Cadastro Salvo!
-          </Typography>
-        </Fade>
-      </Modal>
     </Box>
   );
 };

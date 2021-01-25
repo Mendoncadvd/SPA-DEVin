@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import InputLabel from "../../components/inputLabel/InputLabel";
 import Cadastro from "../../components/cadastro/Cadastro";
-import ListagemNova from "../../components/listagem/ListagemNova";
+import ListagemNova from "../../components/listagem/Listagem";
 import Botao from "../../components/Botao/Botao";
 import CardLateral from "../../components/cardLateral/CardLateral";
 import "./home.css";
@@ -45,7 +45,6 @@ function Home() {
 
   const handleOpenCard = async (id) => {
     const newInfoLateral = await RequestBackend.getID(id);
-    console.log(newInfoLateral);
     setIdProp(newInfoLateral);
     setInfoLateral(true);
   };
@@ -57,7 +56,8 @@ function Home() {
   const [popUpDelete, setPopUpDelete] = useState(false);
 
   const handleDelete = async (id) => {
-    await RequestBackend.deletePorID(id);
+    const resposta = await RequestBackend.deletePorID(id);
+    console.log("resposta", resposta)
     setBusca("");
     setInfoLateral(false);
     setPopUpDelete(true);
@@ -112,7 +112,12 @@ function Home() {
   const handleClosePopUpCadastrar = () => {
     setPopUpCadastrar(false);
   };
-
+  
+  /* função para adicionar */
+  const handleCadastro = async (processo) => {
+    await RequestBackend.postProcesso(processo);
+    handleSalvarCadastrar();
+  };
   return (
     <Box className="main">
       <Box m={4} className={busca === "" ? "home" : "home-posicionada"}>
@@ -176,7 +181,7 @@ function Home() {
         <Box className="box-inferior">
           <Box className="parteInferior">
             <Box className={infoLateral === false ? "lista" : "lista-ajustada"}>
-              <ListagemNova listagem={lista} handlefunction={handleOpenCard} />
+              <ListagemNova listagem={lista} handlefunction={handleOpenCard} display={infoLateral}/>
             </Box>
           </Box>
           {infoLateral === true && (
@@ -196,7 +201,7 @@ function Home() {
         <Modal open={openModal} onClose={handleCloseModal}>
           <Cadastro
             handleFunction={handleCloseModal}
-            salvar={handleSalvarCadastrar}
+            salvar={handleCadastro}
           />
         </Modal>
       </Box>

@@ -1,125 +1,66 @@
 import {
-  Paper,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableContainer,
-  TableHead,
-  makeStyles,
   Box,
+  Grid,
+  ListItemText,
+  ListItem,
+  Paper,
+  makeStyles,
 } from "@material-ui/core";
-import { useEffect, useState, React } from "react";
+import React from "react";
 import "./listagem.css";
-const useStyles = makeStyles({
+import placeholder from "../../utils/placeholder.png";
+const useStyle = makeStyles(() => ({
   root: {
-    borderBottom: "none",
-  },
-  head: {
     fontFamily: "Montserrat",
     fontSize: "14px",
     fontWeight: "bold",
     color: "#757575",
+    width: "20%",
+    marginBottom: "10px",
   },
-  body: {
+
+  container: {
     fontFamily: "Montserrat",
     fontSize: "14px",
     color: "black 87%",
     width: "20%",
   },
-  novo: {
-    background: "black"
-  }
-});
+}));
 
-/* O NOME DO EVENTO DE CLICAR NA TABELA SERA COM O onRowClick */
-const Listagem = (props) => {
-  const { listagem } = props;
-  const classes = useStyles();
-  console.log(listagem);
-  return (
-    <>
-      {listagem?.map((linha) => (
-        <TableContainer
-          className="tabela"
-          component={Paper}
-          square
-          elevation={3}
-          key={linha.id}
-        >
-          <Table>
-            <TableHead>
-              <TableRow
-              hover={true}
-              >
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, head: classes.head }}
-                  size="small"
-                >
-                  Número
-                </TableCell>
+function ListagemNova(props) {
+  const { listagem, handlefunction, display} = props;
+  const classes = useStyle();
+  return listagem?.map((linha) => (
+    <Box component={Paper} className="tabela-container" elevation={3} onClick={() => handlefunction(linha.id) }>
+      <ListItem key={linha.id}>
+        {display === false && <img className="imagem" src={placeholder} alt="PlaceHolder" />}
+        <ListItemText>
+          <Grid classes={{ root: classes.root }}>Número</Grid>
+          <Grid classes={{ container: classes.container }}>{linha.numero}</Grid>
+        </ListItemText>
+        <ListItemText>
+          <Grid classes={{ root: classes.root }}>Assunto</Grid>
+          <Grid classes={{ container: classes.container }}>
+            {linha.assunto}
+          </Grid>
+        </ListItemText>
+        <ListItemText>
+          <Grid classes={{ root: classes.root }}>Interessado</Grid>
+          <Grid classes={{ container: classes.container }}>
+            {linha.interessados}
+          </Grid>
+        </ListItemText>
+        {display === false && 
+          <ListItemText>
+            <Grid classes={{ root: classes.root }}>Descrição</Grid>
+            <Grid classes={{ container: classes.container }}>
+              {linha.descricao}
+            </Grid>
+          </ListItemText>
+        }
+      </ListItem>
+    </Box>
+  ));
+}
 
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, head: classes.head }}
-                  size="small"
-                >
-                  Assunto
-                </TableCell>
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, head: classes.head }}
-                  size="small"
-                >
-                  Interessado
-                </TableCell>
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, head: classes.head }}
-                  size="small"
-                >
-                  Descrição
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow key={linha.id} hover={true}>
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, body: classes.body }}
-                  size="small"
-                >
-                  {linha.numero}
-                </TableCell>
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, body: classes.body }}
-                  size="small"
-                >
-                  {linha.assunto}
-                </TableCell>
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, body: classes.body }}
-                  size="small"
-                >
-                  {linha.interessado}
-                </TableCell>
-                <TableCell
-                  align="left"
-                  classes={{ root: classes.root, body: classes.body }}
-                  size="small"
-                >
-                  {linha.descricao}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      ))}
-    </>
-  );
-};
-
-export default Listagem;
+export default ListagemNova;

@@ -2,7 +2,6 @@ import {
   Box,
   TextField,
 } from "@material-ui/core";
-import { useEffect } from "react";
 
 const InputLabel = (props) => {
   const {
@@ -22,9 +21,6 @@ const InputLabel = (props) => {
     handlefunction
   } = props;
 
-/*   useEffect(() => {
-    console.log(busca)
-  }, [busca]); */
   return (
   
     <Box width={"100%"}>

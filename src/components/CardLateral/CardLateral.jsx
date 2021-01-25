@@ -19,7 +19,6 @@ const CardLateral = (props) => {
               <Grid className="processo">
                 <Typography className="head">Processo</Typography>
                 <Typography className="corpoTexto">
-                  Processo
                   {item.numero}
                 </Typography>
               </Grid>
@@ -27,7 +26,6 @@ const CardLateral = (props) => {
               <Grid className="data">
                 <Typography className="head">Data</Typography>
                 <Typography className="corpoTexto">
-                  Data
                   {item.entrada}
                 </Typography>
               </Grid>

@@ -8,8 +8,15 @@
 
 .caixa .linha1 .header {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+}
+.caixa .linha1 .processo {
+    margin-top: 10px; 
+    margin-right: 140px;
+}
+.caixa .linha1 .data {
+    margin-top: 10px;
+    margin-right: 178px;
 }
 
 .caixa .linha1 .assunto {

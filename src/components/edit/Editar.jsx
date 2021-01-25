@@ -4,8 +4,6 @@ import {
   Paper,
   IconButton,
   Grid,
-  Modal,
-  Fade,
 } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "../cadastro/cadastro.css";

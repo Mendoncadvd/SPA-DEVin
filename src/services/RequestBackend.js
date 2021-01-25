@@ -26,7 +26,7 @@ class RequestBackend {
     }
 
     deletePorID(id) {
-        return axios.get(`${URL}/${id}`)
+        return axios.delete(`${URL}/${id}`)
         .catch(error => {
             throw error;
         })
