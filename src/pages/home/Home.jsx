@@ -58,7 +58,6 @@ function Home() {
 
   const handleDelete = async (id) => {
     const resposta = await RequestBackend.deletePorID(id);
-    console.log("resposta", resposta);
     setBusca("");
     setInfoLateral(false);
     setPopUpDelete(true);

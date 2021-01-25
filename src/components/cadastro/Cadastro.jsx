@@ -56,7 +56,7 @@ const Cadastro = (props) => {
         />
         <Box>
           <Box>
-            <Typography>Interessados</Typography>
+            <Typography className="interessados" >Interessados</Typography>
             <Grid style={{ maxHeight: "100px", overflow: "auto" }}>
               {interessados?.map((pessoa) => (
                 <Typography>{pessoa}</Typography>
