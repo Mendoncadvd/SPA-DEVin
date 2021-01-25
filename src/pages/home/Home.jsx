@@ -28,7 +28,6 @@ function Home() {
   };
   const [openModal, setOpenModal] = useState(false);
 
-  /* Function e State do TextField de pesquisa */
   const [busca, setBusca] = useState("");
   const [lista, setLista] = useState([]);
 
@@ -37,10 +36,8 @@ function Home() {
     const novaLista = await RequestBackend.getAssunto(busca);
     setLista(novaLista);
   };
-  /* state e handlefunction para caixa lateral */
-  const [infoLateral, setInfoLateral] = useState(false);
 
-  /* State para guardar o item selecionado */
+  const [infoLateral, setInfoLateral] = useState(false);
 
   const [idProp, setIdProp] = useState("");
 
@@ -53,7 +50,6 @@ function Home() {
     setInfoLateral(false);
   };
 
-  /* função para deletar */
   const [popUpDelete, setPopUpDelete] = useState(false);
 
   const handleDelete = async (id) => {
@@ -67,7 +63,6 @@ function Home() {
     setPopUpDelete(false);
   };
 
-  /* função  para editar */
   const [editar, setEditar] = useState(false);
 
   const handleCloseEditar = () => {
@@ -77,7 +72,6 @@ function Home() {
     setEditar(true);
   };
 
-  /* função para popup de editar */
   const [popUpEditar, setPopUpEditar] = useState(false);
 
   const handleSalvarEditar = () => {
@@ -96,7 +90,6 @@ function Home() {
     setPopUpEditar(false);
   };
 
-  /* função para popup de salvar*/
   const [popUpCadastrar, setPopUpCadastrar] = useState(false);
   const handleSalvarCadastrar = () => {
     setBusca("");
@@ -113,7 +106,6 @@ function Home() {
     setPopUpCadastrar(false);
   };
 
-  /* função para adicionar */
   const handleCadastro = async (processo) => {
     await RequestBackend.postProcesso(processo);
     handleSalvarCadastrar();

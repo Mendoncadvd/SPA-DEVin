@@ -5,7 +5,6 @@ import placeholder from "../../utils/placeholder.png";
 import "./cardlateral.css";
 import Botao from "../Botao/Botao";
 const CardLateral = (props) => {
-
   const { item, handlefunction, handledelete, handleedit } = props;
   return (
     <Box className="caixa" component={Paper} elevation={3}>
@@ -18,16 +17,12 @@ const CardLateral = (props) => {
             <Box className="header">
               <Grid className="processo">
                 <Typography className="head">Processo</Typography>
-                <Typography className="corpoTexto">
-                  {item.numero}
-                </Typography>
+                <Typography className="corpoTexto">{item.numero}</Typography>
               </Grid>
 
               <Grid className="data">
                 <Typography className="head">Data</Typography>
-                <Typography className="corpoTexto">
-                  {item.entrada}
-                </Typography>
+                <Typography className="corpoTexto">{item.entrada}</Typography>
               </Grid>
 
               <Grid className="botao">
@@ -79,7 +74,6 @@ const CardLateral = (props) => {
           size="small"
           text="REMOVER"
           evento={() => handledelete(item.id)}
-
         />
         <Botao
           classname="botao-editar"

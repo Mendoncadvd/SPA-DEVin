@@ -1,10 +1,4 @@
-import {
-  Box,
-  Typography,
-  Paper,
-  IconButton,
-  Grid,
-} from "@material-ui/core";
+import { Box, Typography, Paper, IconButton, Grid } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "../cadastro/cadastro.css";
 import "../../components/styles/botao.css";
@@ -23,7 +17,7 @@ const Editar = (props) => {
     setInteressados([...interessados, interessado]);
     setInteressado("");
   };
-  
+
   return (
     <Box component={Paper} className="cadastro" width="60%" square>
       <Box className="topoCadastro">
@@ -116,7 +110,6 @@ const Editar = (props) => {
           />
         </Box>
       </Box>
-      
     </Box>
   );
 };

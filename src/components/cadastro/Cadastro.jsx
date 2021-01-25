@@ -1,10 +1,4 @@
-import {
-  Box,
-  Typography,
-  Paper,
-  IconButton,
-  Grid,
-} from "@material-ui/core";
+import { Box, Typography, Paper, IconButton, Grid } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import "./cadastro.css";
 import "../../components/styles/botao.css";
@@ -24,9 +18,9 @@ const Cadastro = (props) => {
     setInteressado("");
   };
 
-  const [assunto, setAssunto] = useState("")
-  const [ descricao, setDescricao] = useState("")
-  
+  const [assunto, setAssunto] = useState("");
+  const [descricao, setDescricao] = useState("");
+
   return (
     <Box component={Paper} className="cadastro" width="60%" square>
       <Box className="topoCadastro">
@@ -56,7 +50,7 @@ const Cadastro = (props) => {
         />
         <Box>
           <Box>
-            <Typography className="interessados" >Interessados</Typography>
+            <Typography className="interessados">Interessados</Typography>
             <Grid style={{ maxHeight: "100px", overflow: "auto" }}>
               {interessados?.map((pessoa) => (
                 <Typography>{pessoa}</Typography>
@@ -116,11 +110,13 @@ const Cadastro = (props) => {
             color="primary"
             size="small"
             text="SALVAR"
-            evento={() => salvar({
-              "descricao": descricao,
-              "assunto": assunto,
-              "interessados": interessados,
-            })}
+            evento={() =>
+              salvar({
+                descricao: descricao,
+                assunto: assunto,
+                interessados: interessados,
+              })
+            }
           />
         </Box>
       </Box>
